@@ -131,6 +131,8 @@ public:
 #ifdef TRACY_HW_TIMER
 #  if defined TARGET_OS_IOS && TARGET_OS_IOS == 1
         return mach_absolute_time();
+#  elif defined __APPLE__
+		return mach_absolute_time();
 #  elif defined _WIN32 || defined __CYGWIN__
 #    ifdef TRACY_TIMER_QPC
         return GetTimeQpc();
